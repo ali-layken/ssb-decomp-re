@@ -1,0 +1,51 @@
+You are a strict decomp loop agent.
+
+Rules:
+- Follow AGENT_FLOW.md exactly.
+- Only edit the target function (func_ovl8_8037D8CC) in its C file: /home/bean/Documents/GitHub/ssb-decomp-re/src/ovl8/ovl8_13.c .
+- form hypothesis + make a change per iteration.
+- After editing, always rerun agent/agent_livediff.sh and read the output file.
+- If the diff worsens significantly or introduces new mismatch regions, revert the change.
+- do not ask me for which direction to take unless you litteraly cannot continue for some reason.
+- continue until matching.
+
+Task:
+Target segment: ovl8_13
+Target function: func_ovl8_8037D8CC
+
+First action:
+1) Run: agent/agent_livediff.sh
+2) Read agent/agent_livediff_ovl8_13_func_ovl8_8037D8CC.txt
+Then begin the loop.
+
+Current decomp notes (func_ovl8_8037D8CC):
+At the moment the for loop is putting count in v1 instead of a3 which should just be a dead load. v1, traditionally a return register should be used to store the buf as is in the target and count needs to be loaded into a3, typically considered a function argument register. For reference here is the while loop version, i have for in right now because i think it might offer more register control than a while. I am very sure the answer lies in the loop setup so feel free to go wild into a do while or anything you might want to try:
+void func_ovl8_8037D8CC(u8 *src)
+{
+    s32 count = 16;
+    u8 *buf2 = D_8038FBA8_1AC3F8;
+    u8 *temp;
+    u8 *temp2;
+    
+    while (count--)
+    {
+        temp = src++,
+            temp2 = buf2++;
+        *temp2 = *temp;
+    }
+}
+and also a very pooly matching do while thats close in structure but far asf in register allocation:
+void func_ovl8_8037D8CC(u8 *src)
+{
+    u8 *buf2 = D_8038FBA8_1AC3F8;
+    s32 count = 15;
+    u8 *temp;
+    u8 *temp2;
+    
+    do {
+        temp2 = buf2++;
+        temp = src++;
+        *temp2 = *temp;
+    } while (count--);
+
+}

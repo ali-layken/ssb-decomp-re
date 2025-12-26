@@ -5,7 +5,7 @@ SHELL = /bin/bash
 
 # ----- Defaults ------
 
-FULL_DISASM ?= 0
+FULL_DISASM ?= 1
 RELOC_DATA ?= 0
 NON_MATCHING ?= 0
 

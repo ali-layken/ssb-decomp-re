@@ -31,6 +31,7 @@ extern f32 D_8038F034_1AB884;
 extern void* D_8038F03C_1AB88C;
 extern u16 D_8038F044_1AB894;
 extern u16 D_8038F046_1AB896;
+extern u8 D_8038FBA8_1AC3F8[];
 
 extern dbUnknownS14 D_8038FB90_1AC3E0;
 extern db4Bytes D_8038FB98_1AC3E8;
@@ -171,7 +172,19 @@ void func_ovl8_8037D6D4(DBFont* dbFont)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D7D4.s")
 
 // 0x8037D8CC
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13/func_ovl8_8037D8CC.s")
+void func_ovl8_8037D8CC(u8 *src)
+{
+    s32 count = 16;
+    u8 *buf2 = D_8038FBA8_1AC3F8;
+    u8 *temp2;
+    u8 *temp;
+    
+    for (; count != 0; count--)
+    {
+        temp2 = src++, temp = buf2++;
+        *temp = *temp2;
+    }
+}
 
 // 0x8037D908
 void func_ovl8_8037D908(dbUnknownS14* arg0)

@@ -1,0 +1,40 @@
+Compiling: [0;36msrc/ovl8/ovl8_13.c[0m -> [0;34mbuild/src/ovl8/ovl8_13.o[0m
+<table class='diff'>
+  <thead>
+    <tr><th>TARGET</th><th>       CURRENT (15)</th><th>       PREVIOUS (15)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>8cc:    lui     v0,%hi(D_8038FBA8_1AC3F8)</td><td> <span class='source-line-num' >  178</span> 8cc:    lui     v0,%hi(D_8038FBA8_1AC3F8)</td><td></td></tr>
+    <tr><td>8d0:    move    a2,a0</td><td> <span class='source-line-num' >  176</span> 8d0:    move    a2,a0</td><td></td></tr>
+    <tr><td>8d4:    addiu   v0,v0,%lo(D_8038FBA8_1AC3F8)</td><td> <span class='source-line-num' >  178</span> 8d4:    addiu   v0,v0,%lo(D_8038FBA8_1AC3F8)</td><td></td></tr>
+    <tr><td>8d8:    li      a1,0xf</td><td> <span class='source-line-num' >  182</span> 8d8:    li      a1,0xf</td><td></td></tr>
+    <tr><td>8dc: <span class='rotation-0' data-rotation="base-branch;2268">~&gt;</span> move    a0,a2</td><td> <span class='source-line-num' >  184</span> 8dc: <span class='rotation-0' data-rotation="my-branch;2268">~&gt;</span> move    a0,a2</td><td></td></tr>
+    <tr><td>8e0:    lbu     t6,0(a0)</td><td> <span class='source-line-num' >  185</span> 8e0:    lbu     t6,0(a0)</td><td></td></tr>
+    <tr><td><span class='register' >8e4:</span>    move    v1,<span class='rotation-0' data-rotation="base-reg;v0">v0</span></td><td><span class='register' >r  182</span> <span class='register' >8e4:</span>    move    v1,<span class='rotation-0' data-rotation="my-reg;a1">a1</span></td><td></td></tr>
+    <tr><td><span class='register' >8e8:</span>    move    a3,<span class='rotation-1' data-rotation="base-reg;a1">a1</span></td><td><span class='register' >r  184</span> <span class='register' >8e8:</span>    move    a3,<span class='rotation-1' data-rotation="my-reg;v0">v0</span></td><td></td></tr>
+    <tr><td>8ec:    addiu   v0,v0,1</td><td> <span class='source-line-num' >  184</span> 8ec:    addiu   v0,v0,1</td><td></td></tr>
+    <tr><td>8f0:    addiu   a2,a2,1</td><td> <span class='source-line-num' >  184</span> 8f0:    addiu   a2,a2,1</td><td></td></tr>
+    <tr><td><span class='register' >8f4:</span>    sb      t6,0(<span class='rotation-2' data-rotation="base-reg;v1">v1</span>)</td><td><span class='register' >r  185</span> <span class='register' >8f4:</span>    sb      t6,0(<span class='rotation-2' data-rotation="my-reg;a3">a3</span>)</td><td></td></tr>
+    <tr><td>8f8:    bnez    a1,8dc <span class='rotation-0' data-rotation="base-branch;2268">~&gt;</span></td><td> <span class='source-line-num' >  182</span> 8f8:    bnez    a1,8dc <span class='rotation-0' data-rotation="my-branch;2268">~&gt;</span></td><td></td></tr>
+    <tr><td>8fc:    addiu   a1,a1,-1</td><td> <span class='source-line-num' >  182</span> 8fc:    addiu   a1,a1,-1</td><td></td></tr>
+    <tr><td>900:    jr      ra</td><td> <span class='source-line-num' >  187</span> 900:    jr      ra</td><td></td></tr>
+    <tr><td>904:    nop     </td><td> <span class='source-line-num' >  187</span> 904:    nop     </td><td></td></tr>
+    <tr><td>908:    addiu   sp,sp,-0x18</td><td> <span class='source-line-num' >  191</span> 908:    addiu   sp,sp,-0x18</td><td></td></tr>
+    <tr><td>90c:    sw      ra,0x14(sp)</td><td> <span class='source-line-num' >  191</span> 90c:    sw      ra,0x14(sp)</td><td></td></tr>
+    <tr><td>910:    lw      t8,0(a0)</td><td> <span class='source-line-num' >  192</span> 910:    lw      t8,0(a0)</td><td></td></tr>
+    <tr><td>914:    lui     t6,%hi(D_8038FB90_1AC3E0)</td><td> <span class='source-line-num' >  192</span> 914:    lui     t6,%hi(D_8038FB90_1AC3E0)</td><td></td></tr>
+    <tr><td>918:    addiu   t6,t6,%lo(D_8038FB90_1AC3E0)</td><td> <span class='source-line-num' >  192</span> 918:    addiu   t6,t6,%lo(D_8038FB90_1AC3E0)</td><td></td></tr>
+    <tr><td>91c:    sw      t8,0(t6)</td><td> <span class='source-line-num' >  192</span> 91c:    sw      t8,0(t6)</td><td></td></tr>
+    <tr><td>920:    lw      t7,4(a0)</td><td> <span class='source-line-num' >  192</span> 920:    lw      t7,4(a0)</td><td></td></tr>
+    <tr><td>924:    sw      t7,4(t6)</td><td> <span class='source-line-num' >  192</span> 924:    sw      t7,4(t6)</td><td></td></tr>
+    <tr><td>928:    lw      t8,8(a0)</td><td> <span class='source-line-num' >  192</span> 928:    lw      t8,8(a0)</td><td></td></tr>
+    <tr><td>92c:    sw      t8,8(t6)</td><td> <span class='source-line-num' >  192</span> 92c:    sw      t8,8(t6)</td><td></td></tr>
+    <tr><td>930:    lw      t7,0xc(a0)</td><td> <span class='source-line-num' >  192</span> 930:    lw      t7,0xc(a0)</td><td></td></tr>
+    <tr><td>934:    sw      t7,0xc(t6)</td><td> <span class='source-line-num' >  192</span> 934:    sw      t7,0xc(t6)</td><td></td></tr>
+    <tr><td>938:    lw      t8,0x10(a0)</td><td> <span class='source-line-num' >  192</span> 938:    lw      t8,0x10(a0)</td><td></td></tr>
+    <tr><td>93c:    lui     a0,%hi(D_8038FB98_1AC3E8)</td><td> <span class='source-line-num' >  194</span> 93c:    lui     a0,%hi(D_8038FB98_1AC3E8)</td><td></td></tr>
+    <tr><td>940:    addiu   a0,a0,%lo(D_8038FB98_1AC3E8)</td><td> <span class='source-line-num' >  194</span> 940:    addiu   a0,a0,%lo(D_8038FB98_1AC3E8)</td><td></td></tr>
+    <tr><td>...</td><td>       ...</td><td></td></tr>
+  </tbody>
+</table>
+
