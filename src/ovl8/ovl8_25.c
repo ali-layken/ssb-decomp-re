@@ -10,6 +10,14 @@ typedef struct dbUnknownThing {
     s16 dbUnknownThing_0x46;
 } dbUnknownThing;
 
+typedef struct DbThingAtArg0_unk34 {
+    /* 0x00 */ s32 unk0;
+    /* 0x04 */ s32 unk4;
+    /* 0x08 */ dbFunction *fn;  
+    /* 0x0C */ s32 unkC;
+    // ...
+} DbThingAtArg0_unk34;
+
 extern dbUnknownLinkStruct D_ovl8_8038D0D0;
 extern dbFunction D_ovl8_8038D218;
 extern dbUnknownLink D_ovl8_8038D370;
@@ -18,6 +26,7 @@ extern dbFunction D_ovl8_8038D4C0;
 extern dbUnknownLink D_ovl8_8038D618;
 extern SYColorRGBA D_ovl8_8038D640; // = { 0xFF, 0x00, 0x00, 0xFF };
 
+void func_ovl8_8037726C(db2Shorts *arg0);
 extern void func_ovl8_8037DFCC(s16, s16);
 void* func_ovl8_8038456C(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, dbUnknown3* arg3, s32 arg4, s32 arg5);
 
@@ -411,4 +420,41 @@ s32 func_ovl8_80384F90(dbUnknown5* arg0, s16 arg1)
 }
 
 // 0x80385024
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_80385024.s")
+s32 func_ovl8_80385024(dbUnknown5* arg0, dbUnknown5* arg1) {
+    db2Shorts sp3C;
+    s32 temp_v0_2;
+    dbUnknownLinkStruct* var_s0;
+    dbUnknownLinkStruct* var_s0_2; 
+    dbFunction* temp_v0;
+    s32 var_s3 = 1;
+
+    var_s0 = (dbUnknownLinkStruct*) arg0;
+    if (arg0 != NULL) {
+        var_s0 = arg0->unk_dbunk5_0x38;
+    }
+    while (func_ovl8_80377244() & var_s0->unk_dbunkstruct_0x30) {
+        func_ovl8_8037726C(&sp3C);
+        ((dbFunction*)(var_s0)) = arg0->unk_dbunk5_0x38->db_func;
+        ((dbFunction*)(var_s0))[10].unk_dbfunc_0x4(((dbFunction*)(var_s0))[10].unk_dbfunc_0x0 + (uintptr_t) arg0->unk_dbunk5_0x38, &sp3C);
+        ((dbFunction*)(var_s0)) = (dbFunction*) arg0->unk_dbunk5_0x30;
+        temp_v0_2 = ((dbFunction*)(var_s0))[20].unk_dbfunc_0x4(((dbFunction*)(var_s0))[20].unk_dbfunc_0x0 + (uintptr_t) arg0, sp3C);
+        if (arg0->unk_dbunk5_0x0 != temp_v0_2) {
+            ((dbFunction*)(var_s0)) = (dbFunction*) arg0->unk_dbunk5_0x30;
+            arg0->unk_dbunk5_0x48 = var_s3;
+            ((dbFunction*)(var_s0))[30].unk_dbfunc_0x4(((dbFunction*)(var_s0))[30].unk_dbfunc_0x0 + (uintptr_t) arg0, temp_v0_2);
+            arg0->unk_dbunk5_0x48 = 0;
+        }
+        gcSleepCurrentGObjThread(var_s3);
+        var_s0 = (dbUnknownLinkStruct*) arg0;
+        if (arg0 != NULL) {
+            var_s0 = arg0->unk_dbunk5_0x38;
+        }
+    }
+    var_s0 = (dbUnknownLinkStruct*) arg0;
+    if (arg0 != NULL) {
+        var_s0 = arg0->unk_dbunk5_0x38;
+    }
+    ((dbFunction*)(temp_v0)) = ((DbThingAtArg0_unk34*)arg0->unk_dbunk5_0x34)->fn;
+    ((dbFunction*)(temp_v0))[3].unk_dbfunc_0x4(((dbFunction*)(temp_v0))[3].unk_dbfunc_0x0 + (uintptr_t) ((DbThingAtArg0_unk34*)arg0->unk_dbunk5_0x34), var_s0->unk_dbunkstruct_0xC, arg0);
+    return 1;
+}
