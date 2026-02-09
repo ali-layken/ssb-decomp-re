@@ -5,6 +5,7 @@
 extern DBMenuPosition D_ovl8_80389F48;
 extern db4Bytes D_ovl8_80389F4C;
 extern DBMenu D_ovl8_8038E1E0[3];
+extern s16 D_ovl8_8038E1E6;
 extern DBMenu D_ovl8_8038E2D4;
 extern DBMenu D_ovl8_8038E564;
 extern s32 D_ovl8_8038E58C;
@@ -18,7 +19,7 @@ extern void func_ovl8_8037481C(Vec3i*, s32);
 extern void func_ovl8_8037DFCC(s16, s16);
 extern void gcSleepCurrentGObjThread(s32);
 void func_ovl8_80385F44(s32, s32);
-void func_ovl8_803863A4(s32, s32, s32);             
+void func_ovl8_803863A4(s32, s32, const char*);
 s32 func_ovl8_80386488(s32, s32);
 void func_ovl8_8038649C();
 void func_ovl8_803864CC(s32, DBMenu*);
@@ -156,7 +157,45 @@ s32 func_ovl8_80386228(s32 arg0, ...)
 }
 
 // 0x803863A4
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_30/func_ovl8_803863A4.s")
+void func_ovl8_803863A4(s32 arg0, s32 arg1, const char *str) 
+{
+    s32 var_v0;
+    s32 width;
+    s32 sp12C; 
+    s32 sp128;
+    s32 sp134;
+    s32 temp_v0;
+    char buffer[250];
+
+    if (str) 
+    {
+        func_ovl8_80386BE0(buffer, str);
+        width = func_ovl8_8037E7A8(buffer);
+    } 
+    else 
+    {
+        width = 0;
+    }
+    
+    var_v0 = sp12C = (width + arg0);
+    if (var_v0 >= 0x119) 
+    {
+        var_v0 = 0x118;
+    }
+    
+    sp128 = 0x18;
+    sp134 = var_v0;
+    func_ovl8_8037B85C(2, &sp12C, &sp128);
+    
+    D_ovl8_8038E1E0[0].unk_dbmenu_0x24 = D_803903C4_1ACC14 = func_ovl8_8037ACAC(var_v0, 0x18, 2, sp12C, sp128);
+    D_ovl8_8038E1E0[0].position.w = var_v0;
+    D_ovl8_8038E1E6 = 0x18;
+    
+    func_ovl8_80385F44(arg1, buffer);
+    func_ovl8_80377108(&D_ovl8_8038E1E0[1], 0, 0xC8);
+    
+    D_803903C8_1ACC18 = 0;
+}
 
 // 0x80386488
 s32 func_ovl8_80386488(s32 arg0, s32 arg1)
