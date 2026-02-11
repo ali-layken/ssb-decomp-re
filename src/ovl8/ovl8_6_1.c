@@ -32,9 +32,18 @@ extern dbFunction D_ovl8_803899F0;
 extern dbFunction D_ovl8_80389AA8;
 extern dbUnknownLink D_ovl8_80389C00;
 extern dbFunction D_ovl8_80389C28;
+extern u16 D_ovl8_80389F30;
+extern u16 D_ovl8_80389F34;
+extern u16 D_ovl8_80389F38;
+extern u16 D_ovl8_80389F3C;
+extern s16 D_ovl8_80389F40;
+extern s16 D_ovl8_80389F44;
+
 extern Vec2hPair D_8038EFB0_1AB800;
 extern dbBytesContainer D_8038EFB8_1AB808;
 extern dbTestMenu* D_8038EFCC_1AB81C;
+
+void func_ovl8_80375E60(dbUnknown6_1*);
 
 // 0x803758B0
 void func_ovl8_803758B0(void)
@@ -245,7 +254,56 @@ void func_ovl8_80375E08(dbTestMenu *arg0, s32 arg1, s32 arg2, u16 arg3, u16 arg4
 }
 
 // 0x80375E60
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6_1/func_ovl8_80375E60.s")
+void func_ovl8_80375E60(dbUnknown6_1 *arg0)
+{
+    SYController *controller = &gSYControllerMain;
+    Vec2h pos;
+    s32 temp_v0;
+    s32 temp_t6;
+    
+    if (arg0->dbUnknown6_1_0x18 != 1)
+    {
+        if (D_ovl8_80389F30 == 0xFFFF)
+        {
+            D_8038EFB0_1AB800.pos.x = (gSYVideoResWidth / 2) + (gSYControllerMain.stick_range.x * 2);
+            D_8038EFB0_1AB800.pos.y = (temp_t6 = (gSYVideoResHeight / 2) - (controller->stick_range.y * 2)) & 0xFFFF;
+        }
+        else if (D_ovl8_80389F30 == 0xFFFE)
+        {
+            D_8038EFB0_1AB800.pos.x += func_ovl8_80375CB8(arg0, gSYControllerMain.stick_range.x);
+            D_8038EFB0_1AB800.pos.y -= func_ovl8_80375CB8(arg0, gSYControllerMain.stick_range.y);
+        }
+        else
+        {
+            pos.x = 0;
+            pos.y = 0;
+            
+            temp_v0 = func_ovl8_80377244();
+            
+            if ((0, temp_v0) & D_ovl8_80389F30)
+            {
+                pos.x = D_ovl8_80389F44 * -1;
+            }
+            if ((0, temp_v0) & D_ovl8_80389F34)
+            {
+                pos.x = D_ovl8_80389F44;
+            }
+            if ((0, temp_v0) & D_ovl8_80389F3C)
+            {
+                pos.y = D_ovl8_80389F40 * -1;
+            }
+            if ((0, temp_v0) & D_ovl8_80389F38)
+            {
+                pos.y = D_ovl8_80389F40;
+            }
+            
+            D_8038EFB0_1AB800.pos.x += pos.y;\
+            D_8038EFB0_1AB800.pos.y += pos.x;
+        }
+        
+        func_ovl8_80375D84(arg0);
+    }
+}
 
 // 0x80376010
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6_1/func_ovl8_80376010.s")
