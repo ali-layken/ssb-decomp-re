@@ -1,6 +1,8 @@
 #include "common.h"
 #include <sys/develop.h>
 
+extern db4Bytes D_ovl8_80389F4C;
+extern db4Bytes D_ovl8_80389F50;
 extern dbUnknownLinkStruct D_ovl8_8038AF38;
 extern dbFunction D_ovl8_8038B018;
 extern dbUnknownLink D_ovl8_8038B170;
@@ -19,12 +21,14 @@ extern dbFunction D_ovl8_8038B7F0;
 extern dbUnknownLink D_ovl8_8038B948;
 extern dbUnknown3 D_ovl8_8038B970;
 
+
 extern void func_ovl8_803724B4(void *, void *, void *, s32, s32);
 extern void func_ovl8_8037726C(db2Shorts*);
 void *func_ovl8_8037FCD8(dbUnknown5 *arg0, dbUnknownLinkStruct **arg1, dbUnknownLink **arg2, u16 *arg3, s32 arg4);
 s32 func_ovl8_80380704(dbUnknownLinkStruct*);
 void func_ovl8_8037BE34(GObj* arg0);
 void func_ovl8_8037BE94(GObj* arg0);
+void func_ovl8_8037D95C(dbUnknownS14* arg0);
 
 // 0x8037F300
 void* func_ovl8_8037F300(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2);
@@ -517,7 +521,83 @@ void* func_ovl8_80380414(dbUnknownLinkStruct* arg0)
 }
 
 // 0x8038045C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8038045C.s")
+void func_ovl8_8038045C(dbUnknown5* arg0) 
+{
+    dbUnknownS14 sp74;
+    DBMenuPosition sp6C;
+    s32 i;
+    s32 width; 
+    Vec2h sp60;
+    db4Bytes* sp5C;
+    char** sp58;
+    s32 var_a2;
+
+    sp58 = arg0->unk_dbunk5_0xB4;
+    
+    func_ovl8_8037D95C(&sp74);
+    
+    arg0->unk_dbunk5_0x20.ls->db_func[20].unk_dbfunc_0x4(
+        arg0->unk_dbunk5_0x20.ls->db_func[20].unk_dbfunc_0x0 + (uintptr_t) arg0->unk_dbunk5_0x20.ls,
+        &sp6C,
+        arg0->unk_dbunk5_0x20.ls->db_func
+    );
+    
+    sp6C.y = 0;
+    sp6C.x = 0;
+    sp6C.h = 12;
+    
+    func_ovl8_8037D990(0x10);
+    func_ovl8_8037D9D0(&D_ovl8_80389F4C);
+    
+    for ( i = 0 ; arg0->unk_dbunk5_0xB0 > i; i++) 
+    {
+        if (
+            (arg0->unk_dbunk5_0xC4 == 0) ||
+            ((i + 1) == arg0->unk_dbunk5_0xC4) ||
+            ((i + 1) == (s32) arg0->unk_dbunk5_0xAC)
+        ) 
+        {
+            sp6C.h = 12;
+            sp6C.y = i * 12;
+            var_a2 = ((s32)arg0->unk_dbunk5_0xAC == i + 1) ? 1 : 0;
+            
+            func_ovl8_8037B434(
+                (Sprite *)arg0->unk_dbunk5_0x40.gobj,
+                &sp6C,
+                var_a2,
+                &(arg0->unk_dbunk5_0x20.ls)->bg_color
+            );
+            
+            width = func_ovl8_8037E7A8(sp58[i]);
+            
+            if ((i + 1) == (s32) arg0->unk_dbunk5_0xAC) 
+            {
+                func_ovl8_8037D9D0(&D_ovl8_80389F50);
+            }
+            else 
+            {
+                if ((arg0->unk_dbunk5_0xC4 == 0) || ((i + 1) == arg0->unk_dbunk5_0xC4)) 
+                {
+                    func_ovl8_8037D9D0(&D_ovl8_80389F4C);
+                }
+            }
+            
+            sp60.x = sp6C.x + 6,
+            sp60.y = sp6C.y + 6;
+            
+            func_ovl8_8037A5B8(arg0->unk_dbunk5_0x40.ls, &sp60, &sp5C);
+            func_ovl8_8037D9B4(&sp5C);
+            func_ovl8_8037DFCC(
+                (s16) (((s32) sp6C.w / 2) - (width / 2)),
+                (s16) ((i * 12 - (func_ovl8_8037E80C() / 2)) + 6)
+            );
+            func_ovl8_8037DD60(arg0->unk_dbunk5_0x40.ls, sp58[i]);
+        }
+    } 
+
+    func_ovl8_8037D908(&sp74);
+    arg0->unk_dbunk5_0xC4 = (s32) arg0->unk_dbunk5_0xAC;
+}
 
 // 0x803806B0
 s32 func_ovl8_803806B0(s32 arg0, s32 arg1)

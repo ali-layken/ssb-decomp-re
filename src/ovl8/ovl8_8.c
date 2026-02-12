@@ -827,7 +827,7 @@ void func_ovl8_8037B3E4(dbUnknown3* arg0)
 }
 
 // 0x8037B434
-void func_ovl8_8037B434(Sprite* arg0, s32 arg1, dbUnknown8_SC* arg2, SYColorRGBA* arg3)
+void func_ovl8_8037B434(Sprite* arg0, s32 arg1, s32 arg2, SYColorRGBA* arg3)
 {
 	dbUnknown8_SC* var_a2;
 
