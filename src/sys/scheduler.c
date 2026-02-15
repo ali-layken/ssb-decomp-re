@@ -378,9 +378,7 @@ void sySchedulerApplyViMode(void)
     sSYSchedulerIsViModePending = FALSE;
 }
 
-// also non matching in snap sys/sched
-void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16 off_right, s16 off_top, s16 off_bottom);
-#ifdef NON_MATCHING
+// 0x80000F30
 void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16 off_right, s16 off_top, s16 off_bottom)
 {
     sb32 not_phi_v1;
@@ -502,14 +500,36 @@ void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16
 
     not_phi_v1 = !phi_v1;
     not_res_in_bounds = !is_res_in_bounds;
-    
-    vertical = (((not_res_in_bounds != FALSE) && (not_phi_v1 != FALSE)) ? 2 : 1) *
-    (((height << 11) / ((off_bottom - off_top) + 480)) / ((is_res_in_bounds != FALSE) ? 1 : 2));
+
+    vertical = (((not_res_in_bounds != FALSE) && (not_phi_v1 != FALSE)) ? 2 : 1) * 
+        (((height * 2048) / ((off_bottom - off_top) + 480)) / ((is_res_in_bounds != FALSE) ? 1 : 2));
     
     sSYSchedulerCurrentViMode.comRegs.width = (((not_res_in_bounds != FALSE) && (phi_v1 != FALSE)) ? 2 : 1) * width;
 
-    if (osTvType == OS_TV_NTSC)
+    if (TRUE)
     {
+#if defined(REGION_US)
+        if (osTvType == OS_TV_NTSC)
+        {
+            sSYSchedulerCurrentViMode.comRegs.burst     = 0x3E52239;
+            sSYSchedulerCurrentViMode.comRegs.vSync     = 0x20C;
+            sSYSchedulerCurrentViMode.comRegs.hSync     = 0xC15;
+            sSYSchedulerCurrentViMode.comRegs.leap      = 0xC150C15;
+            sSYSchedulerCurrentViMode.comRegs.hStart    = 0x6C02EC;
+            sSYSchedulerCurrentViMode.fldRegs[0].vStart = 0x2501FF;
+            sSYSchedulerCurrentViMode.fldRegs[0].vBurst = 0xE0204;
+        }
+        if (osTvType == OS_TV_MPAL)
+        {
+            sSYSchedulerCurrentViMode.comRegs.burst     = 0x4651E39;
+            sSYSchedulerCurrentViMode.comRegs.vSync     = 0x20C;
+            sSYSchedulerCurrentViMode.comRegs.hSync     = 0xC10;
+            sSYSchedulerCurrentViMode.comRegs.leap      = 0xC1C0C1C;
+            sSYSchedulerCurrentViMode.comRegs.hStart    = 0x6C02EC;
+            sSYSchedulerCurrentViMode.fldRegs[0].vStart = 0x2501FF;
+            sSYSchedulerCurrentViMode.fldRegs[0].vBurst = 0xE0204;
+        }
+#else
         sSYSchedulerCurrentViMode.comRegs.burst     = 0x3E52239;
         sSYSchedulerCurrentViMode.comRegs.vSync     = 0x20C;
         sSYSchedulerCurrentViMode.comRegs.hSync     = 0xC15;
@@ -517,17 +537,9 @@ void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16
         sSYSchedulerCurrentViMode.comRegs.hStart    = 0x6C02EC;
         sSYSchedulerCurrentViMode.fldRegs[0].vStart = 0x2501FF;
         sSYSchedulerCurrentViMode.fldRegs[0].vBurst = 0xE0204;
+#endif
     }
-    if (osTvType == OS_TV_MPAL)
-    {
-        sSYSchedulerCurrentViMode.comRegs.burst     = 0x4651E39;
-        sSYSchedulerCurrentViMode.comRegs.vSync     = 0x20C;
-        sSYSchedulerCurrentViMode.comRegs.hSync     = 0xC10;
-        sSYSchedulerCurrentViMode.comRegs.leap      = 0xC1C0C1C;
-        sSYSchedulerCurrentViMode.comRegs.hStart    = 0x6C02EC;
-        sSYSchedulerCurrentViMode.fldRegs[0].vStart = 0x2501FF;
-        sSYSchedulerCurrentViMode.fldRegs[0].vBurst = 0xE0204;
-    }
+    
     sSYSchedulerCurrentViMode.fldRegs[1].vStart = sSYSchedulerCurrentViMode.fldRegs[0].vStart;
     
     pos1 = sSYSchedulerCurrentViMode.comRegs.hStart >> 16;
@@ -586,7 +598,9 @@ void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16
     if ((is_res_in_bounds != FALSE) && (phi_v1 != FALSE))
     {
         sSYSchedulerCurrentViMode.comRegs.vSync += 1;
+        if (1);
         
+#if defined(REGION_US)
         if (osTvType == OS_TV_MPAL)
         {
             sSYSchedulerCurrentViMode.comRegs.hSync += 0x40001;
@@ -596,11 +610,14 @@ void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16
         {
             sSYSchedulerCurrentViMode.comRegs.leap += 0xFFFCFFFE;
         }
+#endif
     }
     else
     {
         sSYSchedulerCurrentViMode.fldRegs[0].vStart += 0xFFFDFFFE;
+        if (1);
 
+#if defined(REGION_US)
         if (osTvType == OS_TV_MPAL)
         {
             sSYSchedulerCurrentViMode.fldRegs[0].vBurst += 0xFFFCFFFE;
@@ -609,17 +626,21 @@ void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16
         {
             sSYSchedulerCurrentViMode.fldRegs[1].vBurst += 0x2FFFE;
         }
+#endif
     }
+    
     sSYSchedulerCurrentViMode.comRegs.vCurrent  = 0;
-    sSYSchedulerCurrentViMode.comRegs.xScale    = (width << 10) / ((off_right - off_left) + 640);
+    sSYSchedulerCurrentViMode.comRegs.xScale    = (width * 1024) / ((off_right - off_left) + 640);
     sSYSchedulerCurrentViMode.fldRegs[0].origin = (!(sSYSchedulerImageSetup.colordepth32) ? 1 : 2) * width * 2;
-    sSYSchedulerCurrentViMode.fldRegs[1].origin = (!(sSYSchedulerImageSetup.colordepth32) ? 1 : 2) * (((is_res_in_bounds != FALSE) ? 1 : 2) * width * 2);
+    phi_v1 = sSYSchedulerImageSetup.colordepth32;
+    sSYSchedulerCurrentViMode.fldRegs[1].origin = (!(phi_v1) ? 1 : 2) * (((is_res_in_bounds != FALSE) ? 1 : 2) * width * 2);
     sSYSchedulerCurrentViMode.fldRegs[0].yScale = vertical;
     sSYSchedulerCurrentViMode.fldRegs[1].yScale = vertical;
 
     if (sSYSchedulerImageSetup.unk_b04)
     {
-        if ((height << 11) < 0xB4000)
+        if (1);
+        if (height < 360)
         {
             sSYSchedulerCurrentViMode.fldRegs[0].yScale += 0x3000000;
             sSYSchedulerCurrentViMode.fldRegs[1].yScale += 0x1000000;
@@ -632,11 +653,8 @@ void sySchedulerUpdateViMode(u32 width, u32 height, u32 flags, s16 off_left, s16
     }
     sSYSchedulerCurrentViMode.fldRegs[0].vIntr = 2;
     sSYSchedulerCurrentViMode.fldRegs[1].vIntr = 2;
-    sSYSchedulerIsViModePending = TRUE;
+    sSYSchedulerIsViModePending = 1;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/scheduler/sySchedulerUpdateViMode.s")
-#endif
 
 void sySchedulerSwapBuffer(void)
 {
