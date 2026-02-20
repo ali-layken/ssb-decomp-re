@@ -52,8 +52,15 @@ typedef struct dbUnknown23 {
     void (*callback)(void* base, void* arg);
 } dbUnknown23;
 
+typedef struct {
+    s32 unk0[0x8/4];
+    s32* unk8;
+    s32 unkC;
+} dbUnknown24;
+
 extern s32 D_ovl8_8038BC30;
 
+void func_ovl8_8038185C(dbUnknown24 *arg0, s32 *arg1);
 void func_ovl8_80381908(dbUnknownLink* arg0);
 
 extern dbUnknownLinkStruct D_ovl8_8038BC34;
@@ -187,7 +194,28 @@ void func_ovl8_803817C0(dbUnknown22* arg0, f32 arg1)
 }
 
 // 0x8038185C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_17/func_ovl8_8038185C.s")
+void func_ovl8_8038185C(dbUnknown24 *arg0, s32 *arg1) 
+{
+    s32 i;
+    s32 sp40;
+    s32 sp3C;
+    s32 sp38;
+    s32 *var_a1;
+    s32 *var_v1;
+
+    func_ovl8_8037FF40(arg1, &arg0->unkC, &sp40, &sp3C, &sp38);
+    arg0->unk8 = func_ovl8_803716D8((arg0->unkC * 4) + 4);
+    
+    if (arg0->unk8 == NULL || arg0->unkC == 0)
+        return;
+    
+    var_a1 = arg0->unk8;
+    var_v1 = arg1;
+    
+    for (i = 0; arg0->unkC > i; i++) var_a1[i] = *var_v1++;
+
+    var_a1[i] = 0;
+}
 
 // 0x80381908
 void func_ovl8_80381908(dbUnknownLink* arg0)
