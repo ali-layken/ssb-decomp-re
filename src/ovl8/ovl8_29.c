@@ -1,8 +1,15 @@
 #include "common.h"
 #include <sys/develop.h>
 
+extern dbUnknownLinkStruct D_ovl8_8038DEC0;
+extern dbFunction D_ovl8_8038DFA0;
+extern dbFunction D_ovl8_8038E0F8;
+extern dbUnknownLinkStruct D_ovl8_8038E120;
+extern dbFunction D_ovl8_8038E188;
+
 void func_ovl8_803817C0(void*, f32);
 void func_ovl8_80373694(void*, f32);
+dbUnknown5* func_ovl8_80385B74(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2, dbUnknown3* arg3, s32 arg4);
 
 // 0x80385A50
 s32 func_ovl8_80385A50(s32 arg0, s32 arg1)
@@ -22,21 +29,18 @@ s32 func_ovl8_80385A50(s32 arg0, s32 arg1)
 }
 
 // 0x80385AAC
-#ifdef NON_MATCHING
-extern dbUnknownLinkStruct D_ovl8_8038DEC0;
-extern dbFunction D_ovl8_8038DFA0;
-extern dbFunction D_ovl8_8038E0F8;
-extern dbUnknownLinkStruct D_ovl8_8038E120;
-extern dbFunction D_ovl8_8038E188;
-dbUnknown5* func_ovl8_80385AAC(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2) {
-    if ((arg0 != 0) || ((arg0 = (dbUnknown5 *) func_ovl8_803717A0(0x140)) != 0)) {
-        if (arg1 == NULL) {
-            if (&arg0->unk_dbunk5_0xD8) {}
-            if (&arg0->unk_dbunk5_0x134) {}
-            arg2 = (dbUnknownLink *)&arg0->unk_dbunk5_0x134;
+dbUnknown5* func_ovl8_80385AAC(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2) 
+{
+    if ((arg0 != 0) || ((arg0 = (dbUnknown5 *) func_ovl8_803717A0(0x140)) != 0)) 
+    {
+        if (arg1 == NULL) 
+        {
             arg1 = (dbUnknownLinkStruct *)&arg0->unk_dbunk5_0xD8;
+            arg2 = (dbUnknownLink *)&arg0->unk_dbunk5_0x134;
+            #line 37
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
+            #line 43
         }
         func_ovl8_8037C710(arg0, arg1, arg2);
         func_ovl8_80381130(arg0->unk_dbunk5_0xB8);
@@ -48,15 +52,65 @@ dbUnknown5* func_ovl8_80385AAC(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUn
     }
     return arg0;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_29/func_ovl8_80385AAC.s")
-#endif /* NON_MATCHING */
 
 // 0x80385B74
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_29/func_ovl8_80385B74.s")
+dbUnknown5* func_ovl8_80385B74(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2, dbUnknown3* arg3, s32 arg4) 
+{
+    s32 pad;
+    
+    if ((arg0 != 0) || ((arg0 = (dbUnknown5 *) func_ovl8_803717A0(0x140)) != 0)) 
+    {
+        if (arg1 == NULL) 
+        {
+            arg1 = (dbUnknownLinkStruct *)&arg0->unk_dbunk5_0xD8;
+            arg2 = (dbUnknownLink *)&arg0->unk_dbunk5_0x134;
+            #line 63
+            func_ovl8_803717E0(arg1);
+            func_ovl8_8037C2D0(arg2);
+            #line 70
+        }
+        
+        func_ovl8_8037C7D4(arg0, arg1, arg2, arg3, arg3->unk_dbunk3_0x24->unk_dbunk3_0x0, arg3->unk_dbunk3_0x24->unk_dbunk3_0x4, arg4);
+        func_ovl8_8038116C(arg0->unk_dbunk5_0xB8, arg3->unk_dbunk3_0x24->unk_dbunk3_0x8, arg0);
+        
+        arg0->unk_dbunk5_0x30 = &D_ovl8_8038DEC0;
+        arg1->db_func = &D_ovl8_8038DFA0;
+        arg2->unk_dbunklink_0x8 = (dbUnknownLink *)&D_ovl8_8038E0F8;
+        arg0->unk_dbunk5_0x4C = (dbUnknownLinkStruct *)&D_ovl8_8038E120,\
+        arg0->unk_dbunk5_0xD4 = (s32)&D_ovl8_8038E188;
+    }
+    
+    return arg0;
+}
 
 // 0x80385C70
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_29/func_ovl8_80385C70.s")
+void func_ovl8_80385C70(dbUnknown5* arg0, s32 arg1)
+{
+    if (arg0 != NULL)
+    {
+        arg0->unk_dbunk5_0x30 = &D_ovl8_8038DEC0,
+        arg0->unk_dbunk5_0x38->db_func = &D_ovl8_8038DFA0;
+        arg0->unk_dbunk5_0x34->unk_dbunklink_0x8 = &D_ovl8_8038E0F8;
+        
+        arg0->unk_dbunk5_0x4C = &D_ovl8_8038E120;\
+        arg0->unk_dbunk5_0xD4 = &D_ovl8_8038E188;
+
+        #line 93
+        func_ovl8_8038120C(arg0->unk_dbunk5_0xB8, 0);
+        #line 100
+        func_ovl8_8037C92C(arg0, 0);
+
+        if (arg1 != 0)
+        {
+            func_ovl8_8037C30C(arg0->unk_dbunk5_0x34, 0);
+            func_ovl8_803718C4(arg0->unk_dbunk5_0x38, 0);
+        }
+        if (arg1 & 1)
+        {
+            func_ovl8_803717C0(arg0);
+        }
+    }
+}
 
 // 0x80385D34
 void func_ovl8_80385D34(s32 arg0)
