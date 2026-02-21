@@ -119,21 +119,21 @@ void* func_ovl8_8037CE90(dbUnknownLinkStruct* arg0, dbBytesCopy* arg1)
 }
 
 // 0x8037CEE8
-#ifdef NON_MATCHING
 void func_ovl8_8037CEE8(dbUnknownLinkStruct* arg0, s32 arg1)
 {
 	if (arg0 == NULL)
 		return;
 
 	arg0->db_func = &D_ovl8_8038A700;
+	
 	gcEjectGObj(arg0->unk_dbunkstruct_0x48);
+	#line 128
 	func_ovl8_803718C4(arg0, 0); // weird swapping
+	#line 131
+
 	if (arg1 & 1)
 		func_ovl8_803717C0(arg0);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_12/func_ovl8_8037CEE8.s")
-#endif /* NON_MATCHING */
 
 // 0x8037CF4C
 void func_ovl8_8037CF4C(dbUnknownLinkStruct* arg0) {
