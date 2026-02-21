@@ -29,7 +29,6 @@ s32 func_ovl8_80385460(s32 arg0, dbUnknown3* arg1)
 }
 
 // 0x803854C4
-#ifdef NON_MATCHING
 void* func_ovl8_803854C4(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, s32 arg3, s32 arg4, s32 arg5)
 {
     dbFunction *db_func;
@@ -40,8 +39,10 @@ void* func_ovl8_803854C4(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownL
         {
             arg1 = &arg0->unk_dbunk5_0x58;
             arg2 = &arg0->unk_dbunk5_0x4C;
+            #line 37
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
+            #line 45
         }
 
         func_ovl8_803847A0(arg0, arg1, arg2, arg3, arg4, arg5);
@@ -56,9 +57,6 @@ void* func_ovl8_803854C4(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownL
 
     return arg0;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_27/func_ovl8_803854C4.s")
-#endif /* NON_MATCHING */
 
 // 0x80385598
 void func_ovl8_80385598(dbUnknown5* arg0, s32 arg1)
