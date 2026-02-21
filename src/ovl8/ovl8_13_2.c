@@ -230,7 +230,30 @@ s32 func_ovl8_8037E830(s32 arg0, UnkStruct8037E830 *arg1)
 }
 
 // 0x8037E8C8
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13_2/func_ovl8_8037E8C8.s")
+dbUnknown5* func_ovl8_8037E8C8(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2) 
+{
+    if ((arg0 != 0) || ((arg0 = func_ovl8_803717A0(0x120)) != 0)) 
+    {
+        if (arg1 == NULL) 
+        {
+            arg1 = (dbUnknownLinkStruct *)&arg0->unk_dbunk5_0xB8;
+            arg2 = (dbUnknownLink *)&arg0->unk_dbunk5_0x114;
+            #line 238
+            func_ovl8_803717E0(arg1);
+            func_ovl8_8037C2D0(arg2);
+            #line 244
+        }
+        
+        func_ovl8_8037C710(arg0, arg1, arg2);
+        
+        arg0->unk_dbunk5_0x30 = &D_ovl8_8038A8A0;
+        arg1->db_func = &D_ovl8_8038A980;
+        arg2->unk_dbunklink_0x8 = (dbUnknownLink *)&D_ovl8_8038AAD8;
+        arg0->unk_dbunk5_0x4C = (dbUnknownLinkStruct *)&D_ovl8_8038AB00;
+    }
+    
+    return arg0;
+}
 
 // 0x8037E97C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_13_2/func_ovl8_8037E97C.s")
