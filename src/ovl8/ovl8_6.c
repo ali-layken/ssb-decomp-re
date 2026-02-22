@@ -690,7 +690,7 @@ dbUnknown7* func_ovl8_803751C0(dbUnknown7* arg0, dbUnknownLinkStruct* arg1, dbUn
             #line 687
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
-            #line 693
+            #line 694
         }
 
         arg0->unk20 = arg1;

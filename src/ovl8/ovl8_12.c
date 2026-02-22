@@ -129,7 +129,7 @@ void func_ovl8_8037CEE8(dbUnknownLinkStruct* arg0, s32 arg1)
 	gcEjectGObj(arg0->unk_dbunkstruct_0x48);
 	#line 128
 	func_ovl8_803718C4(arg0, 0); // weird swapping
-	#line 131
+	#line 133
 
 	if (arg1 & 1)
 		func_ovl8_803717C0(arg0);

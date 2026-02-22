@@ -47,7 +47,7 @@ dbUnknown5* func_ovl8_8037CAF0(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUn
             #line 44
             func_ovl8_803717E0(arg1, arg2);
             func_ovl8_8037C2D0(arg2);
-            #line 50
+            #line 51
         }
         func_ovl8_80373C10(arg0, arg1, arg2);
         arg0->unk_dbunk5_0x30 = &D_ovl8_8038A4A0;

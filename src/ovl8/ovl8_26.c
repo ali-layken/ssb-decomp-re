@@ -45,7 +45,7 @@ void *func_ovl8_803851E4(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownL
             #line 42
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
-            #line 48
+            #line 49
         }
         
         func_ovl8_803847A0(arg0, arg1, arg2, arg3, arg4, arg5);
