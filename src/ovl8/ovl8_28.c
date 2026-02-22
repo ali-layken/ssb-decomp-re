@@ -6,6 +6,10 @@ extern dbFunction D_ovl8_8038DCD8;
 extern dbUnknownLink D_ovl8_8038DE30;
 extern dbUnknownLinkStruct D_ovl8_8038DE58;
 
+dbUnknown5* func_ovl8_80385758(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, DBMenu *arg3, s32 arg4);
+
+extern void func_ovl8_803724B4(void *, void *, void *, s32, s32);
+
 // 0x80385640
 s32 func_ovl8_80385640(s32 arg0, s32 arg1)
 {
@@ -25,18 +29,18 @@ s32 func_ovl8_80385640(s32 arg0, s32 arg1)
 }
 
 // 0x8038569C
-void* func_ovl8_8038569C(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2);
-#ifdef NON_MATCHING
-void* func_ovl8_8038569C(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2)
+dbUnknown5* func_ovl8_8038569C(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2)
 {
     if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xC0)) != NULL))
     {
         if (arg1 == NULL)
         {
             arg1 = &arg0->unk_dbunk5_0x54;\
-            arg2 = &arg0->unk_dbunk5_0xB4;\
+            arg2 = &arg0->unk_dbunk5_0xB4;
+            #line 37
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
+            #line 44
         }
 
         func_ovl8_803820B0(arg0, arg1, arg2);
@@ -50,12 +54,51 @@ void* func_ovl8_8038569C(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownL
 
     return arg0;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_28/func_ovl8_8038569C.s")
-#endif /* NON_MATCHING */
 
 // 0x80385758
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_28/func_ovl8_80385758.s")
+dbUnknown5* func_ovl8_80385758(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, DBMenu *arg3, s32 arg4)
+{
+    s32 sp44;
+    s32 sp40;
+    s32 sp3C;
+    u16 temp_v1;
+    
+    if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xC0)) != NULL))
+    {
+        if (arg1 == NULL)
+        {
+            arg1 = &arg0->unk_dbunk5_0x54;\
+            arg2 = &arg0->unk_dbunk5_0xB4;
+            #line 69
+            func_ovl8_803717E0(arg1);
+            func_ovl8_8037C2D0(arg2);
+            #line 76
+        }
+
+        func_ovl8_8038215C(arg0, arg1, arg2, arg3, arg4, arg3->unk_dbmenu_0x24);
+        func_ovl8_803724B4(&arg0->unk_dbunk5_0x40, arg1, arg3, arg4, 0);
+
+        arg0->unk_dbunk5_0x30 = &D_ovl8_8038DC00,
+        arg1->db_func = &D_ovl8_8038DCD8;
+        arg2->unk_dbunklink_0x8 = &D_ovl8_8038DE30;
+        arg0->unk_dbunk5_0x4C = &D_ovl8_8038DE58;
+        temp_v1 = arg3->unk_dbmenu_0x10;
+        
+        if (temp_v1 == 2) {
+            sp3C = 2;
+        } else if (temp_v1 == 5){
+            sp3C = 3;
+        }
+        
+        sp44 = (s32) arg3->position.w;
+        sp40 = (s32) arg3->position.h;
+        func_ovl8_8037B85C(sp3C, &sp44, &sp40);
+        arg0->unk_dbunk5_0xB0 = func_ovl8_8037ACAC(arg3->position.w, arg3->position.h, sp3C, sp44, sp40);
+        arg0->unk_dbunk5_0x48 = arg0->unk_dbunk5_0xB0;
+    }
+
+    return arg0;
+}
 
 // 0x803858B0
 void func_ovl8_803858B0(dbUnknown5* arg0, s32 arg1)
