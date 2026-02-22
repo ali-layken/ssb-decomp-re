@@ -75,6 +75,7 @@ dbUnknownLink* func_ovl8_80375920(dbUnknownLink* arg0, dbUnknownLinkStruct* arg1
             arg1 = &arg0->unk_dbunklink_0x14.unk_dbunkstruct_0xC;
             #line 72
             func_ovl8_803717E0(&arg0->unk_dbunklink_0x14.unk_dbunkstruct_0xC);
+            #line 78
         }
         func_ovl8_80371FB0(arg0, arg1);
         arg0->unk_dbunklink_0xC = &D_ovl8_80389830;
@@ -337,9 +338,10 @@ dbUnknown5* func_ovl8_80376010(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUn
         {
             arg1 = &arg0->unk_dbunk5_0x4C;
             arg2 = &arg0->unk_dbunk5_0xA8;
-            #line 45
+            #line 337
             func_ovl8_803717E0(arg1, arg2);
             func_ovl8_8037C2D0(arg2);
+            #line 344
         }
         
         func_ovl8_80372844(arg0, arg1, arg2, arg3);
@@ -400,8 +402,9 @@ void func_ovl8_803761F4(dbUnknownS38 *arg0, s32 arg1)
 		arg0->unk_dbunks38_0x1C->unk_dbunklink_0x8 = &D_ovl8_80389C00;
 		arg0->unk_dbunks38_0x38.unk_dbunkstruct_0xC = &D_ovl8_80389C28;
 
-        #line 104 // I don't know why this needs to be such a low line number
+        #line 401
 		func_ovl8_803720D4(&arg0->unk_dbunks38_0x38, 0);
+        #line 407
 		func_ovl8_8037295C(arg0, 0);
 
 		if (arg1 != 0)

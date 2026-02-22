@@ -76,6 +76,8 @@ extern DBMenu D_ovl8_80389550;
 extern dbTestMenu* D_8038EFC4_1AB814;
 extern dbUnknownLinkStruct* D_8038EFC8_1AB818;
 
+void func_ovl8_8037588C(dbUnknown6* arg0);
+
 // 0x80374460
 s32 func_ovl8_80374460(s32 arg0, s32 arg1, s32 arg2, s32 arg3)
 {
@@ -677,7 +679,31 @@ void func_ovl8_80375118(dbUnknownLinkStruct* targetLinkStruct) {
 
 
 // 0x803751C0
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6/func_ovl8_803751C0.s")
+dbUnknown7* func_ovl8_803751C0(dbUnknown7* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2)
+{
+    if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0x8C)) != NULL))
+    {
+        if (arg1 == NULL)
+        {
+            arg1 = &arg0->unk30;
+            arg2 = &arg0->unk24;
+            #line 687
+            func_ovl8_803717E0(arg1);
+            func_ovl8_8037C2D0(arg2);
+            #line 693
+        }
+
+        arg0->unk20 = arg1;
+        arg0->unk1C = arg2;
+        arg0->unk18 = &D_ovl8_80389670;
+        arg1->db_func = &D_ovl8_803896A8;
+        arg2->unk_dbunklink_0x8 = &D_ovl8_80389800;
+
+        func_ovl8_8037588C(arg0);
+    }
+
+    return arg0;
+}
 
 // 0x80375270
 void func_ovl8_80375270(dbUnknownS38* arg0, s32 arg1) {
