@@ -44,6 +44,8 @@ extern dbBytesContainer D_8038EFB8_1AB808;
 extern dbTestMenu* D_8038EFCC_1AB81C;
 
 void func_ovl8_80375E60(dbUnknown6_1*);
+void func_ovl8_8037BE34(GObj* arg0);
+void func_ovl8_8037BE94(GObj* arg0);
 
 // 0x803758B0
 void func_ovl8_803758B0(void)
@@ -64,7 +66,26 @@ void func_ovl8_803758E8(void)
 }
 
 // 0x80375920
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6_1/func_ovl8_80375920.s")
+dbUnknownLink* func_ovl8_80375920(dbUnknownLink* arg0, dbUnknownLinkStruct* arg1)
+{
+    if ((arg0 != NULL) || (arg0 = func_ovl8_803717A0(0x7C)))
+    {
+        if (arg1 == NULL)
+        {
+            arg1 = &arg0->unk_dbunklink_0x14.unk_dbunkstruct_0xC;
+            #line 72
+            func_ovl8_803717E0(&arg0->unk_dbunklink_0x14.unk_dbunkstruct_0xC);
+        }
+        func_ovl8_80371FB0(arg0, arg1);
+        arg0->unk_dbunklink_0xC = &D_ovl8_80389830;
+        arg1->db_func = &D_ovl8_80389898;
+        arg0->unk_dbunklink_0x14.unk_dbunkstruct_0x0 = 0;
+        arg0->unk_dbunklink_0x14.position.x = 0;
+        D_8038EFB0_1AB800.pos.x = (gSYVideoResWidth / 2);
+        D_8038EFB0_1AB800.pos.y = (gSYVideoResHeight / 2);
+    }
+    return arg0;
+}
 
 // 0x803759F0
 void* func_ovl8_803759F0(dbTestMenu* arg0, dbUnknownLinkStruct* arg1, dbUnknown8_S28* arg2, Sprite* arg3) {
@@ -306,7 +327,45 @@ void func_ovl8_80375E60(dbUnknown6_1 *arg0)
 }
 
 // 0x80376010
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6_1/func_ovl8_80376010.s")
+dbUnknown5* func_ovl8_80376010(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUnknownLink *arg2, DBMenu *arg3, s32 arg4) 
+{
+    s32 sp2C;
+
+    if ((arg0 != NULL) || (arg0 = func_ovl8_803717A0(0xB4))) 
+    {
+        if (arg1 == NULL) 
+        {
+            arg1 = &arg0->unk_dbunk5_0x4C;
+            arg2 = &arg0->unk_dbunk5_0xA8;
+            #line 45
+            func_ovl8_803717E0(arg1, arg2);
+            func_ovl8_8037C2D0(arg2);
+        }
+        
+        func_ovl8_80372844(arg0, arg1, arg2, arg3);
+        func_ovl8_8037203C(&arg0->unk_dbunk5_0x38, arg1, arg3, 0);
+        
+        arg0->db_func = &D_ovl8_803899F0;
+        arg1->db_func = &D_ovl8_80389AA8;
+        arg2->unk_dbunklink_0x8 = &D_ovl8_80389C00;
+        arg0->unk_dbunk5_0x44.ls = &D_ovl8_80389C28;
+        
+        // temp_v1 = arg3->unk14;
+        if ((arg3->id == 0x4648574E) || (arg3->id == 0x46464857)) 
+        {
+            arg0->db_func[4].unk_dbfunc_0x4(arg0->db_func[4].unk_dbfunc_0x0 + (uintptr_t)arg0);
+        }
+        
+        func_ovl8_803723AC(&arg0->unk_dbunk5_0x38, arg0, 0, &func_ovl8_8037BE34, &func_ovl8_8037BE94, arg4);
+        
+        if (arg3->position.x == -0x2710) 
+        {
+            func_ovl8_803772AC(arg0);
+        }
+    }
+    
+    return arg0;
+}
 
 // 0x80376164
 s32 func_ovl8_80376164(s32 arg0, s32 *arg1)
@@ -332,8 +391,6 @@ s32 func_ovl8_80376164(s32 arg0, s32 *arg1)
 }
 
 // 0x803761F4
-void func_ovl8_803761F4(dbUnknownS38 *arg0, s32 arg1);
-#ifdef NON_MATCHING
 void func_ovl8_803761F4(dbUnknownS38 *arg0, s32 arg1)
 {
 	if (arg0 != NULL)
@@ -343,6 +400,7 @@ void func_ovl8_803761F4(dbUnknownS38 *arg0, s32 arg1)
 		arg0->unk_dbunks38_0x1C->unk_dbunklink_0x8 = &D_ovl8_80389C00;
 		arg0->unk_dbunks38_0x38.unk_dbunkstruct_0xC = &D_ovl8_80389C28;
 
+        #line 104 // I don't know why this needs to be such a low line number
 		func_ovl8_803720D4(&arg0->unk_dbunks38_0x38, 0);
 		func_ovl8_8037295C(arg0, 0);
 
@@ -358,9 +416,6 @@ void func_ovl8_803761F4(dbUnknownS38 *arg0, s32 arg1)
 		}
 	}
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_6_1/func_ovl8_803761F4.s")
-#endif /* NON_MATCHING */
 
 // 0x803762AC
 s32 func_ovl8_803762AC(Vec3i* arg0)
