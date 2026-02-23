@@ -29,6 +29,7 @@ extern SYColorRGBA D_ovl8_8038D640; // = { 0xFF, 0x00, 0x00, 0xFF };
 void func_ovl8_8037726C(db2Shorts *arg0);
 extern void func_ovl8_8037DFCC(s16, s16);
 dbUnknown5* func_ovl8_8038456C(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, dbUnknown3* arg3, s32 arg4, s32 arg5);
+void func_ovl8_80384AE8(dbUnknown5_2* arg0, s32* arg1);
 
 // 0x80384460
 s32 func_ovl8_80384460(s32 arg0, dbUnknown3* arg1)
@@ -163,7 +164,42 @@ void func_ovl8_80384774(dbUnknownS38* arg0)
 }
 
 // 0x803847A0
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_25/func_ovl8_803847A0.s")
+dbUnknown5* func_ovl8_803847A0(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, DBMenu* arg3, s32 arg4, s32 arg5)
+{
+    dbUnknownLinkStruct* ls;
+    
+    if (arg0 != NULL || ((arg0 = func_ovl8_803717A0(0xB4)) != NULL))
+    {
+        if (arg1 == NULL)
+        {
+            arg1 = &arg0->unk_dbunk5_0x4C;
+            arg2 = &arg0->unk_dbunk5_0xA8;
+            #line 173
+            func_ovl8_803717E0(arg1);
+            func_ovl8_8037C2D0(arg2);
+            #line 180
+        }
+
+        func_ovl8_8037345C(arg0, arg1, arg2, arg3, arg4);
+        arg0->unk_dbunk5_0x30 = &D_ovl8_8038D3A0;
+        arg1->db_func = &D_ovl8_8038D4C0;
+        arg2->unk_dbunklink_0x8 = &D_ovl8_8038D618;
+        arg0->unk_dbunk5_0x3C.s_16 = 1;
+        arg0->unk_dbunk5_0x0 = 1.0F;
+        arg0->unk_dbunk5_0x44.v.x = func_ovl8_8037E80C();
+
+        ls = arg0;
+        if (arg0 != NULL) {
+            ls = arg0->unk_dbunk5_0x38;
+        }
+        
+        arg0->unk_dbunk5_0x44.v.y = ls->position.h / arg0->unk_dbunk5_0x44.v.x;
+        arg0->unk_dbunk5_0x48 = 0;
+        func_ovl8_80384AE8(arg0, arg5);
+    }
+
+    return arg0;
+}
 
 // 0x803848CC
 void func_ovl8_803848CC(dbUnknown5* arg0, s32 arg1)
