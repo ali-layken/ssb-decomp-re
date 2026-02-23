@@ -84,9 +84,12 @@ dbUnknown5* func_ovl8_80385758(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUn
         arg0->unk_dbunk5_0x4C = &D_ovl8_8038DE58;
         temp_v1 = arg3->unk_dbmenu_0x10;
         
-        if (temp_v1 == 2) {
+        if (temp_v1 == 2) 
+        {
             sp3C = 2;
-        } else if (temp_v1 == 5){
+        } 
+        else if (temp_v1 == 5)
+        {
             sp3C = 3;
         }
         
