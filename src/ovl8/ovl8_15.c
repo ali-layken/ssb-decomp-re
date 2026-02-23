@@ -356,10 +356,10 @@ dbUnknown5* func_ovl8_80380048(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUn
         {
             arg1 = &arg0->unk_dbunk5_0xC8;\
             arg2 = &arg0->unk_dbunk5_0x124;
-            #line 12
+            #line 356
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
-            #line 19
+            #line 363
         }
         
         func_ovl8_80376530(arg0, arg1, arg2, arg3, -1, 1);
