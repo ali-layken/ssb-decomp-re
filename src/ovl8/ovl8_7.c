@@ -7,14 +7,110 @@ extern dbFunction D_ovl8_80389D48;
 extern dbFunction D_ovl8_80389EA0;
 extern dbUnknownLinkStruct D_ovl8_80389EC8;
 
-typedef struct dbUnknownSpriteHolder
-{
-	u8 dbUnknownSpriteHolder_0x0[0x40];
-	Sprite *dbUnknownSpriteHolder_0x40;
-} dbUnknownSpriteHolder;
+extern void func_ovl8_8037BE34();
+extern void func_ovl8_8037BE94();
+
+void func_ovl8_80376AA4(dbUnknown5* arg0, s16 arg1, s16 arg2);
+void func_ovl8_80376B60(s32 arg0, u8* arg1, u32* arg2);
 
 // 0x80376530
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_7/func_ovl8_80376530.s")
+dbUnknown5* func_ovl8_80376530(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, DBMenu* arg3, s32 arg4, s32 arg5)
+{
+    s32 sp4C;
+    DBMenuPositionContainer sp44;
+    s32 sp40;
+    s32 sp3C;
+    s32 sp38;
+    s32 sp34;
+
+	if ((arg0 != NULL) || (arg0 = func_ovl8_803717A0(0xB8), (arg0 != NULL)))
+	{
+		if (arg1 == NULL)
+		{
+			arg1 = &arg0->unk_dbunk5_0x4C;
+			arg2 = &arg0->unk_dbunk5_0xAC;
+            #line 29
+			func_ovl8_803717E0(arg1);
+			func_ovl8_8037C2D0(arg2);
+            #line 36
+		}
+        
+        func_ovl8_80372844(arg0, arg1, arg2, arg3);
+        func_ovl8_8037203C(&arg0->unk_dbunk5_0x38, arg1, arg3, arg4);\
+		arg0->db_func = &D_ovl8_80389C90;
+		arg1->db_func = &D_ovl8_80389D48;
+		arg2->unk_dbunklink_0x8 = &D_ovl8_80389EA0;
+		arg0->unk_dbunk5_0x44.ls = &D_ovl8_80389EC8;
+
+        if (arg3->id == 'BHWN' || arg3->id == 'BFHW') 
+        {
+            arg0->db_func[4].unk_dbfunc_0x4(arg0->db_func[4].unk_dbfunc_0x0 + (uintptr_t)arg0);
+        }
+
+
+        if (arg3->unk_dbmenu_0x10 == 1) 
+        {
+            sp4C = 2;
+            sp40 = 0x40;
+            sp3C = 0x20;
+        } 
+        else if (arg3->unk_dbmenu_0x10 == 4) 
+        {
+            sp4C = 3;
+            sp40 = 0x20;
+            sp3C = 0x20;
+        } 
+        else if (arg3->unk_dbmenu_0x10 == 6) 
+        {
+            sp4C = 1;
+            sp40 = 0x40;
+            sp3C = 0x20;
+        }
+        
+        arg0->unk_dbunk5_0xA8 = 0;
+        
+        if (arg4 == 0) 
+        {
+            arg0->unk_dbunk5_0x40.gobj = func_ovl8_8037ACAC(arg3->position.w, arg3->position.h, sp4C, sp40, sp3C);;
+            arg0->unk_dbunk5_0xA8 = arg0->unk_dbunk5_0x40.gobj;
+            
+            if (arg3->unk_dbmenu_0x10 == 6) 
+            {
+                func_ovl8_80376B60(2, &((dbUnknownLinkStruct*)arg0)->unk_dbunkstruct_0x20->text_color, &sp34);
+                arg0->unk_dbunk5_0x40.ls->unk_dbunkstruct_0x20->unk_dbunkstruct_0x0 = sp34;
+                func_ovl8_80376B60(2, &((dbUnknownLinkStruct*)arg0)->unk_dbunkstruct_0x20->bg_color, &sp34);
+				arg0->unk_dbunk5_0x40.ls->unk_dbunkstruct_0x20[4].unk_dbunkstruct_0x5C.y = sp34; // golly that's weird
+            } 
+            else 
+            {
+                sp44.position = arg3->position;
+                sp44.position.x = 0;
+                sp44.position.y = 0;
+                func_ovl8_80377AEC(arg0->unk_dbunk5_0x40.gobj, &sp44, &arg3->bg_color, 4);
+            }
+            func_ovl8_803723AC(&arg0->unk_dbunk5_0x38, arg0, arg0->unk_dbunk5_0x40.gobj, func_ovl8_8037BE34, func_ovl8_8037BE94, arg5);
+            ((dbUnknownLinkStruct*)arg0)->unk_dbunkstruct_0x20->position.x = arg3->position.x;
+            ((dbUnknownLinkStruct*)arg0)->unk_dbunkstruct_0x20->position.y = arg3->position.y;
+            func_ovl8_80376AA4(arg0, arg3->position.x, arg3->position.y);
+        } 
+        else if (arg4 != -1) 
+        {
+            arg0->unk_dbunk5_0x40.gobj = arg4;
+            func_ovl8_803723AC(&arg0->unk_dbunk5_0x38, arg0, arg4, func_ovl8_8037BE34, func_ovl8_8037BE94, arg5);
+            ((dbUnknownLinkStruct*)arg0)->unk_dbunkstruct_0x20->position.x = arg3->position.x;
+            ((dbUnknownLinkStruct*)arg0)->unk_dbunkstruct_0x20->position.y = arg3->position.y;
+            func_ovl8_80376AA4(arg0, arg3->position.x, arg3->position.y);
+        }
+        
+        
+        if (arg3->position.x == -0x2710) 
+        {
+            func_ovl8_803772AC(arg0);
+        }
+    }
+    
+	return arg0;
+}
 
 // 0x80376848
 s32 func_ovl8_80376848(s32 arg0, dbUnknown5* arg1)
@@ -118,9 +214,9 @@ void func_ovl8_80376A48(dbUnknownLinkStruct *arg0, s16 arg1, s16 arg2)
 }
 
 // 0x80376AA4
-void func_ovl8_80376AA4(dbUnknownSpriteHolder* arg0, s16 arg1, s16 arg2)
+void func_ovl8_80376AA4(dbUnknown5* arg0, s16 arg1, s16 arg2)
 {
-	spMove(arg0->dbUnknownSpriteHolder_0x40, arg1, arg2);
+	spMove(arg0->unk_dbunk5_0x40.gobj, arg1, arg2);
 }
 
 // 0x80376ADC

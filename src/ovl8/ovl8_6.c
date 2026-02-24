@@ -54,10 +54,6 @@ typedef struct dbUnknownStructS24
     dbUnknownLinkStruct* unk_0x20;
 } dbUnknownStructS24;
 
-typedef struct DBMenuPositionContainer {
-    DBMenuPosition position;
-} DBMenuPositionContainer;
-
 extern void* D_ovl8_80389580;
 extern void* D_ovl8_80389598;
 extern void* D_ovl8_803895D4;
@@ -687,10 +683,10 @@ dbUnknown7* func_ovl8_803751C0(dbUnknown7* arg0, dbUnknownLinkStruct* arg1, dbUn
         {
             arg1 = &arg0->unk30;
             arg2 = &arg0->unk24;
-            #line 687
+            #line 683
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
-            #line 694
+            #line 690
         }
 
         arg0->unk20 = arg1;
