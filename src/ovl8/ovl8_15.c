@@ -3,6 +3,8 @@
 
 extern db4Bytes D_ovl8_80389F4C;
 extern db4Bytes D_ovl8_80389F50;
+extern dbUnknownLinkStruct D_ovl8_8038ADD0;
+extern dbUnknownLinkStruct D_ovl8_8038AE84;
 extern dbUnknownLinkStruct D_ovl8_8038AF38;
 extern dbFunction D_ovl8_8038B018;
 extern dbUnknownLink D_ovl8_8038B170;
@@ -39,10 +41,10 @@ dbUnknown5* func_ovl8_8037F300(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUn
         {
             arg1 = &arg0->unk_dbunk5_0x4C;
             arg2 = &arg0->unk_dbunk5_0xA8;
-            #line 39
+            #line 41
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
-            #line 46
+            #line 48
         }
 
         func_ovl8_803733AC(arg0, arg1, arg2);
@@ -57,7 +59,62 @@ dbUnknown5* func_ovl8_8037F300(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUn
 }
 
 // 0x8037F3A8
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_15/func_ovl8_8037F3A8.s")
+dbUnknown5* func_ovl8_8037F3A8(dbUnknown5* arg0, dbUnknownLinkStruct* arg1, dbUnknownLink* arg2, DBMenu* arg3, s32 arg4)
+{
+	s32 var_v0;
+    u32 var_v1;
+    dbUnknownLinkStruct* var_v0_2;
+
+	if ((arg0 != NULL) || (arg0 = func_ovl8_803717A0(0xB4), (arg0 != NULL)))
+	{
+		if (arg1 == NULL)
+		{
+			arg1 = &arg0->unk_dbunk5_0x4C;
+			arg2 = &arg0->unk_dbunk5_0xA8;
+            #line 71
+			func_ovl8_803717E0(arg1, arg2);
+			func_ovl8_8037C2D0(arg2);
+            #line 78
+		}
+        
+		func_ovl8_8037345C(arg0, arg1, arg2, arg3, arg4);
+		arg0->unk_dbunk5_0x30 = &D_ovl8_8038AF38;
+		arg1->db_func = &D_ovl8_8038B018;
+		arg2->unk_dbunklink_0x8 = &D_ovl8_8038B170;
+		arg0->unk_dbunk5_0x40.s_16 = 0x10;
+
+        var_v0 = (arg3->position.h< arg3->position.w) ? 0 : 1;
+		arg0->unk_dbunk5_0x3C.w = var_v0;
+		arg0->unk_dbunk5_0x4 = 0.0F;
+        
+        if (var_v0 != 0) 
+        {
+            var_v0_2 = arg0;
+            if (arg0 != NULL) 
+            {
+                var_v0_2 = arg0->unk_dbunk5_0x38;
+            }
+            
+            var_v1 = var_v0_2->position.h;
+        } 
+        else 
+        {
+            var_v0_2 = arg0;
+            if (arg0 != NULL) 
+            {
+                var_v0_2 = arg0->unk_dbunk5_0x38;
+            }
+            
+            var_v1 = var_v0_2->position.w;
+        }
+        
+        arg0->unk_dbunk5_0x8 = var_v1;
+		arg0->unk_dbunk5_0x44.ls = &D_ovl8_8038ADD0;
+		arg0->unk_dbunk5_0x48 = &D_ovl8_8038AE84;
+        
+	}
+	return arg0;
+}
 
 // 0x8037F4F4
 void func_ovl8_8037F4F4(dbUnknown5* arg0, s32 arg1)
@@ -207,10 +264,10 @@ dbUnknown5* func_ovl8_8037FC1C(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUn
         {
             arg1 = &arg0->unk_dbunk5_0x60;\
             arg2 = &arg0->unk_dbunk5_0xC0;
-            #line 207
+            #line 264
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
-            #line 214
+            #line 271
         }
         func_ovl8_8037F300(arg0, arg1, arg2);
         func_ovl8_80372430((char*) arg0 + 0x4C, arg1);
@@ -236,10 +293,10 @@ dbUnknown5 *func_ovl8_8037FCD8(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUn
         {
             arg1 = &arg0->unk_dbunk5_0x60;\
             arg2 = &arg0->unk_dbunk5_0xC0;
-            #line 236
+            #line 293
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
-            #line 243
+            #line 300
         }
         
         func_ovl8_8037F3A8(arg0, arg1, arg2, arg3, arg4);
@@ -356,10 +413,10 @@ dbUnknown5* func_ovl8_80380048(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUn
         {
             arg1 = &arg0->unk_dbunk5_0xC8;\
             arg2 = &arg0->unk_dbunk5_0x124;
-            #line 356
+            #line 413
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
-            #line 363
+            #line 420
         }
         
         func_ovl8_80376530(arg0, arg1, arg2, arg3, -1, 1);
@@ -757,10 +814,10 @@ dbUnknown5* func_ovl8_80380B6C(dbUnknown5 *arg0, dbUnknownLinkStruct *arg1, dbUn
         {
             arg1 = &arg0->unk_dbunk5_0xD4;\
             arg2 = &arg0->unk_dbunk5_0xC8;
-            #line 757
+            #line 814
             func_ovl8_803717E0(arg1);
             func_ovl8_8037C2D0(arg2);
-            #line 764
+            #line 821
         }
         
         func_ovl8_80380048(arg0, arg1, arg2, arg3, arg4);
